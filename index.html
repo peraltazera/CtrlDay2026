@@ -1,7 +1,12 @@
 <form id="meu-formulario">
   <input type="text" name="Nome" placeholder="Seu Nome" required>
-  <input type="email" name="Telefone" placeholder="Seu Email" required>
+  <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
   <input type="text" name="Modulo" placeholder="Seu Nome" required>
+  <select name="Modulo" id="modulo" required>
+    <option value="">Kids</option>
+    <option value="Suporte">Teens</option>
+    <option value="Financeiro">Young</option>
+  </select>
   <button type="submit" id="submit">Enviar</button>
 </form>
 
