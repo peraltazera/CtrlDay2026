@@ -114,7 +114,7 @@
         <option value="Young">Young</option>
     </select>
     
-    <button type="submit" id="submit">Quero conhecer!</button>
+    <button type="submit" id="submit">Quero Participar!</button>
 </form>
 
 <script>
@@ -136,7 +136,7 @@
         
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                alert('Inscrição enviada com sucesso! Logo entraremos em contato.');
+                alert('Inscrição enviada com sucesso!');
                 form.reset();
                 btn.disabled = false;
                 btn.innerText = "Quero conhecer!";
