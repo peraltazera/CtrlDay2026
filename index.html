@@ -1,0 +1,18 @@
+<form id="meu-formulario">
+  <input type="text" name="Nome" placeholder="Seu Nome" required>
+  <input type="email" name="Telefone" placeholder="Seu Email" required>
+  <input type="text" name="Modulo" placeholder="Seu Nome" required>
+  <button type="submit" id="submit">Enviar</button>
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyJSUaRqzgkGqhUqkZwbfoCUWWedESpaJCWuDgZgNTNm0dFL1txG932xDg2xmCUaoty/exec'
+  const form = document.getElementById('meu-formulario')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert('Dados enviados com sucesso!'))
+      .catch(error => console.error('Erro!', error.message))
+  })
+</script>
