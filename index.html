@@ -1,22 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Ctrl+Play</title>
+    <!-- Importando a fonte similar à utilizada na marca -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --orange-ctrl: #FF6B00;
+            --blue-ctrl: #002D5E;
+            --white: #FFFFFF;
+            --gray-light: #F4F4F4;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--gray-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #meu-formulario {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            border-top: 8px solid var(--orange-ctrl);
+        }
+
+        .logo-placeholder {
+            text-align: center;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--blue-ctrl);
+            margin-bottom: 25px;
+        }
+
+        .logo-placeholder span {
+            color: var(--orange-ctrl);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--blue-ctrl);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--orange-ctrl);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, background-color 0.3s;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #e66000;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        label {
+            font-size: 14px;
+            color: var(--blue-ctrl);
+            font-weight: 600;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
 <form id="meu-formulario">
-  <input type="text" name="Nome" placeholder="Seu Nome" required>
-  <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
-  <select name="Modulo" id="modulo" required>
-    <option value="">Kids</option>
-    <option value="Suporte">Teens</option>
-    <option value="Financeiro">Young</option>
-  </select>
-  <button type="submit" id="submit">Enviar</button>
+    <div class="logo-placeholder">Ctrl+<span>Play</span></div>
+    
+    <label for="nome">Nome do Aluno</label>
+    <input type="text" id="nome" name="Nome" placeholder="Ex: Victor Pereira" required>
+    
+    <label for="telefone">Telefone dos Pais</label>
+    <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
+    
+    <label for="modulo">Módulo de Interesse</label>
+    <select name="Modulo" id="modulo" required>
+        <option value="" disabled selected>Selecione o módulo</option>
+        <option value="Kids">Kids</option>
+        <option value="Teens">Teens</option>
+        <option value="Young">Young</option>
+    </select>
+    
+    <button type="submit" id="submit">Quero conhecer!</button>
 </form>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyJSUaRqzgkGqhUqkZwbfoCUWWedESpaJCWuDgZgNTNm0dFL1txG932xDg2xmCUaoty/exec'
-  const form = document.getElementById('meu-formulario')
+    // Máscara de Telefone
+    const telInput = document.getElementById('telefone');
+    telInput.addEventListener('input', (e) => {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => alert('Dados enviados com sucesso!'))
-      .catch(error => console.error('Erro!', error.message))
-  })
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyJSUaRqzgkGqhUqkZwbfoCUWWedESpaJCWuDgZgNTNm0dFL1txG932xDg2xmCUaoty/exec';
+    const form = document.getElementById('meu-formulario');
+    const btn = document.getElementById('submit');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Enviando...";
+        
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                alert('Inscrição enviada com sucesso! Logo entraremos em contato.');
+                form.reset();
+                btn.disabled = false;
+                btn.innerText = "Quero conhecer!";
+            })
+            .catch(error => {
+                console.error('Erro!', error.message);
+                alert('Ocorreu um erro. Tente novamente.');
+                btn.disabled = false;
+                btn.innerText = "Quero conhecer!";
+            });
+    });
 </script>
+
+</body>
+</html>
