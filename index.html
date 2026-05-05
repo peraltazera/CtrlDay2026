@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário Ctrl+Play</title>
-    <!-- Importando a fonte similar à utilizada na marca -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -21,8 +20,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Mudado para min-height para acomodar textos longos */
             margin: 0;
+            padding: 20px; /* Respiro para telas menores */
+            box-sizing: border-box;
         }
 
         #meu-formulario {
@@ -40,17 +41,36 @@
             font-weight: 700;
             font-size: 24px;
             color: var(--blue-ctrl);
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
 
         .logo-placeholder span {
             color: var(--orange-ctrl);
         }
 
+        /* ESTILO PARA AS INFORMAÇÕES DO EVENTO */
+        .info-evento {
+            text-align: center;
+            background-color: #f0f4ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+            border-left: 4px solid var(--orange-ctrl);
+        }
+
+        .info-evento strong {
+            color: var(--blue-ctrl);
+            display: block;
+            margin-bottom: 5px;
+        }
+
         input, select {
             width: 100%;
             padding: 12px 15px;
-            margin: 10px 0;
+            margin: 10px 0 20px 0; /* Aumentado o espaçamento inferior */
             border: 2px solid #E0E0E0;
             border-radius: 10px;
             box-sizing: border-box;
@@ -73,7 +93,7 @@
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
             transition: transform 0.2s, background-color 0.3s;
             text-transform: uppercase;
         }
@@ -81,10 +101,6 @@
         button:hover {
             background-color: #e66000;
             transform: translateY(-2px);
-        }
-
-        button:active {
-            transform: translateY(0);
         }
 
         label {
@@ -97,25 +113,35 @@
 </head>
 <body>
 
-<form id="meu-formulario">
+<div id="meu-formulario">
     <div class="logo-placeholder">Ctrl+<span>Play</span></div>
+
+    <!-- ESPAÇO PARA INFORMAÇÕES DO EVENTO -->
+    <div class="info-evento">
+        <strong>🚀 Workshop de Programação 2026</strong>
+        Participe do nosso evento presencial! <br>
+        📅 Data: 20 de Março <br>
+        📍 Local: Unidade Ctrl+Play
+    </div>
     
-    <label for="nome">Nome do Aluno</label>
-    <input type="text" id="nome" name="Nome" placeholder="Ex: Victor Pereira" required>
-    
-    <label for="telefone">Telefone dos Pais</label>
-    <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
-    
-    <label for="modulo">Módulo de Interesse</label>
-    <select name="Modulo" id="modulo" required>
-        <option value="" disabled selected>Selecione o módulo</option>
-        <option value="Kids">Kids</option>
-        <option value="Teens">Teens</option>
-        <option value="Young">Young</option>
-    </select>
-    
-    <button type="submit" id="submit">Quero Participar!</button>
-</form>
+    <form>
+        <label for="nome">Nome do Aluno</label>
+        <input type="text" id="nome" name="Nome" placeholder="Ex: Victor Pereira" required>
+        
+        <label for="telefone">Telefone dos Pais</label>
+        <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
+        
+        <label for="modulo">Módulo de Interesse</label>
+        <select name="Modulo" id="modulo" required>
+            <option value="" disabled selected>Selecione o módulo</option>
+            <option value="Kids">Kids</option>
+            <option value="Teens">Teens</option>
+            <option value="Young">Young</option>
+        </select>
+        
+        <button type="submit" id="submit">Quero Participar!</button>
+    </form>
+</div>
 
 <script>
     // Máscara de Telefone
@@ -126,7 +152,7 @@
     });
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxbHzTcJSpzpd3SCkNTTcXlBZtVy_KF28wHHo4_Fixa2jKA2Yw9qr2o7JbjfO0NliHz/exec';
-    const form = document.getElementById('meu-formulario');
+    const form = document.querySelector('form');
     const btn = document.getElementById('submit');
 
     form.addEventListener('submit', e => {
@@ -139,13 +165,13 @@
                 alert('Inscrição enviada com sucesso!');
                 form.reset();
                 btn.disabled = false;
-                btn.innerText = "Quero conhecer!";
+                btn.innerText = "Quero Participar!";
             })
             .catch(error => {
                 console.error('Erro!', error.message);
                 alert('Ocorreu um erro. Tente novamente.');
                 btn.disabled = false;
-                btn.innerText = "Quero conhecer!";
+                btn.innerText = "Quero Participar!";
             });
     });
 </script>
