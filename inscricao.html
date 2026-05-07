@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Ctrl+Play</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --orange-ctrl: #FF6B00;
+            --blue-ctrl: #5988ff;
+            --white: #FFFFFF;
+            --gray-light: #F4F4F4;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--blue-ctrl);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Mudado para min-height para acomodar textos longos */
+            margin: 0;
+            padding: 20px; /* Respiro para telas menores */
+            box-sizing: border-box;
+        }
+
+        #meu-formulario {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            border-top: 8px solid var(--orange-ctrl);
+        }
+
+        .logo-placeholder {
+            text-align: center;
+            font-weight: 600;
+            font-size: 24px;
+            color: var(--orange-ctrl);
+            margin-bottom: 10px;
+        }
+
+        .logo-placeholder span {
+            color: var(--blue-ctrl);
+        }
+
+        /* ESTILO PARA AS INFORMAÇÕES DO EVENTO */
+        .info-evento {
+            text-align: center;
+            background-color: #f0f4ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+            border-left: 4px solid var(--orange-ctrl);
+        }
+
+        .info-evento strong {
+            color: var(--blue-ctrl);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0 20px 0; /* Aumentado o espaçamento inferior */
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--blue-ctrl);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--orange-ctrl);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, background-color 0.3s;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #e66000;
+            transform: translateY(-2px);
+        }
+
+        label {
+            font-size: 14px;
+            color: var(--blue-ctrl);
+            font-weight: 600;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="meu-formulario">
+    <div class="logo-placeholder">Ctrl+<span>Day</span></div>
+
+    <!-- ESPAÇO PARA INFORMAÇÕES DO EVENTO -->
+    <div class="info-evento">
+        <strong>🎨 Competição Artística Ctrl+Play</strong>
+        Mostre seu talento em nossa competição!
+        <!--<ul style="text-align: left; padding-left: 20px; font-size: 13px; margin: 10px 0;">
+            <li><strong>Kids:</strong> Desenhos em Pixel Art.</li><br>
+            <li><strong>Teens:</strong> Animações em Pixel Art.</li><br>
+            <li><strong>Young:</strong> Modelagem 3D no MagicaVoxel.</li><br>
+        </ul>
+        <strong style="font-size: 16px; margin-bottom: 10px;">Criterios de Avaliação:</strong>
+        <ul style="text-align: left; padding-left: 20px; font-size: 13px; margin: 0px 0;">
+            <li>Compatibilidade com o tema.</li><br>
+            <li>Criatividade.</li><br>
+            <li>Fundamentos Artísticos.</li><br>
+        </ul>
+
+        <strong>Participe do nosso evento online!</strong> <br>
+        📅 Data: 23 de Maio <br>
+        🕐 Horário: 08:00 <br>
+        <br>
+         <div style="background-color: var(--orange-ctrl); color: white; padding: 10px; border-radius: 8px; font-weight: bold;">
+            🎁 Prêmio: Voucher Steam de R$ 150,00 para o vencedor de cada categoria!
+        </div>
+        <a href="regulamento.html">
+            Regulamento
+        </a>-->
+        <br>
+        <br>
+        Leia o <a href="index.html">
+            Regulamento
+        </a> antes da Inscrição!
+    </div>
+    
+    <form>
+        <label for="Responsavel">Nome do Responsavel</label>
+        <input type="text" id="nome" name="Nome" placeholder="Ex: Camila Guimarães" required>
+
+        <label for="telefone">Email do Responsavel</label>
+        <input type="email" name="Email" id="email" placeholder="Ex: CamilaGuimarães@gmail.com" required>
+
+        <label for="telefone">Telefone do Responsavel</label>
+        <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
+        
+        <label for="Aluno">Nome do Aluno</label>
+        <input type="text" id="nome" name="Nome" placeholder="Ex: Ricardo Sales" required>
+        
+        <label for="modulo">Módulo do Aluno</label>
+        <select name="Modulo" id="modulo" required>
+            <option value="" disabled selected>Selecione o módulo</option>
+            <option value="Kids">Kids 6-9 anos</option>
+            <option value="Teens">Teens 10-13 anos</option>
+            <option value="Young">Young 14-18 anos</option>
+        </select>
+        
+        <button type="submit" id="submit">Quero Participar!</button>
+    </form>
+</div>
+
+<script>
+    // Máscara de Telefone
+    const telInput = document.getElementById('telefone');
+    telInput.addEventListener('input', (e) => {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxbHzTcJSpzpd3SCkNTTcXlBZtVy_KF28wHHo4_Fixa2jKA2Yw9qr2o7JbjfO0NliHz/exec';
+    const form = document.querySelector('form');
+    const btn = document.getElementById('submit');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Enviando...";
+        
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                alert('Inscrição enviada com sucesso!');
+                form.reset();
+                btn.disabled = false;
+                btn.innerText = "Quero Participar!";
+            })
+            .catch(error => {
+                console.error('Erro!', error.message);
+                alert('Ocorreu um erro. Tente novamente.');
+                btn.disabled = false;
+                btn.innerText = "Quero Participar!";
+            });
+    });
+</script>
+
+</body>
+</html>
