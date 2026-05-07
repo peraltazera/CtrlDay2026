@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário Ctrl+Play</title>
+    <title>Regulamento - Ctrl+Day</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -12,6 +12,7 @@
             --blue-ctrl: #5988ff;
             --white: #FFFFFF;
             --gray-light: #F4F4F4;
+            --text-dark: #333;
         }
 
         body {
@@ -20,19 +21,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Mudado para min-height para acomodar textos longos */
+            min-height: 100vh;
             margin: 0;
-            padding: 20px; /* Respiro para telas menores */
+            padding: 20px;
             box-sizing: border-box;
         }
 
-        #meu-formulario {
+        #container-regulamento {
             background-color: var(--white);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 600px; /* Um pouco mais largo para facilitar a leitura do texto */
             border-top: 8px solid var(--orange-ctrl);
         }
 
@@ -41,160 +42,171 @@
             font-weight: 600;
             font-size: 24px;
             color: var(--orange-ctrl);
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .logo-placeholder span {
             color: var(--blue-ctrl);
         }
 
-        /* ESTILO PARA AS INFORMAÇÕES DO EVENTO */
-        .info-evento {
-            text-align: center;
-            background-color: #f0f4ff;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: 14px;
-            color: #333;
-            line-height: 1.5;
-            border-left: 4px solid var(--orange-ctrl);
-        }
-
-        .info-evento strong {
+        h1 {
             color: var(--blue-ctrl);
-            display: block;
-            margin-bottom: 5px;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
 
-        input, select {
-            width: 100%;
-            padding: 12px 15px;
-            margin: 10px 0 20px 0; /* Aumentado o espaçamento inferior */
-            border: 2px solid #E0E0E0;
+        .conteudo-regulamento {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 14px;
+            max-height: 60vh; /* Limita a altura para não quebrar o layout */
+            overflow-y: auto; /* Adiciona scroll se o texto for muito grande */
+            padding-right: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Estilização básica do scroll */
+        .conteudo-regulamento::-webkit-scrollbar {
+            width: 6px;
+        }
+        .conteudo-regulamento::-webkit-scrollbar-thumb {
+            background: #ccc;
             border-radius: 10px;
-            box-sizing: border-box;
+        }
+
+        h2 {
+            color: var(--orange-ctrl);
             font-size: 16px;
-            transition: border-color 0.3s ease;
-            outline: none;
+            margin-top: 20px;
         }
 
-        input:focus, select:focus {
-            border-color: var(--blue-ctrl);
+        p, li {
+            margin-bottom: 10px;
         }
 
-        button {
+        .btn-voltar {
+            display: block;
+            text-align: center;
             width: 100%;
             background-color: var(--orange-ctrl);
             color: white;
             padding: 15px;
             border: none;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 10px;
+            text-decoration: none;
             transition: transform 0.2s, background-color 0.3s;
             text-transform: uppercase;
+            box-sizing: border-box;
         }
 
-        button:hover {
+        .btn-voltar:hover {
             background-color: #e66000;
             transform: translateY(-2px);
-        }
-
-        label {
-            font-size: 14px;
-            color: var(--blue-ctrl);
-            font-weight: 600;
-            margin-left: 5px;
         }
     </style>
 </head>
 <body>
 
-<div id="meu-formulario">
+<div id="container-regulamento">
     <div class="logo-placeholder">Ctrl+<span>Day</span></div>
-
-    <!-- ESPAÇO PARA INFORMAÇÕES DO EVENTO -->
-    <div class="info-evento">
-        <strong>🎨 Competição Artística Ctrl+Play</strong>
-        Mostre seu talento em nossa competição!
-        <ul style="text-align: left; padding-left: 20px; font-size: 13px; margin: 10px 0;">
-            <li><strong>Kids:</strong> Desenhos em Pixel Art.</li><br>
-            <li><strong>Teens:</strong> Animações em Pixel Art.</li><br>
-            <li><strong>Young:</strong> Modelagem 3D no MagicaVoxel.</li><br>
-        </ul>
-        <strong style="font-size: 16px; margin-bottom: 10px;">Criterios de Avaliação:</strong>
-        <ul style="text-align: left; padding-left: 20px; font-size: 13px; margin: 0px 0;">
-            <li>Compatibilidade com o tema.</li><br>
-            <li>Criatividade.</li><br>
-            <li>Fundamentos Artísticos.</li><br>
-        </ul>
-
-        <strong>Participe do nosso evento online!</strong> <br>
-        📅 Data: 23 de Maio <br>
-        🕐 Horário: 09:00 <br>
-        <br>
-         <div style="background-color: var(--orange-ctrl); color: white; padding: 10px; border-radius: 8px; font-weight: bold;">
-            🎁 Prêmio: Voucher Steam de R$ 100,00 para o vencedor de cada categoria!
-        </div>
-    </div>
     
-    <form>
-        <label for="Responsavel">Nome do Responsavel</label>
-        <input type="text" id="Responsavel" name="Nome" placeholder="Ex: Camila Guimarães" required>
+    <h1>Regulamento da Competição</h1>
+
+   <div class="conteudo-regulamento">
+        <h2>1. Objetivo</h2>
+        <p>A Competição Artística Ctrl+Day visa estimular a criatividade e o desenvolvimento técnico dos alunos em artes digitais, utilizando as ferramentas aprendidas em aula.</p>
+
+         <h2>2. Inscrições</h2>
+        <p>As inscrições devem ser realizadas através do formulário oficial até o dia anterior ao evento. É obrigatório o preenchimento de todos os dados do responsável e do aluno.</p>
+
+
+        <h2>3. Categorias</h2>
+        <ul>
+            <li><strong>Kids (6-9 anos):</strong> Criação de personagens ou cenários em Pixel Art.</li>
+            <li><strong>Teens (10-13 anos):</strong> Criação de animações utilizando técnicas de Pixel Art.</li>
+            <li><strong>Young (14-18 anos):</strong> Modelagem e renderização de objetos ou cenários 3D no software MagicaVoxel.</li>
+        </ul>
+
+       <h2>4. Critérios de Avaliação</h2>
+        <p>Os projetos serão julgados por uma banca de instrutores com base em:</p>
+        <ul>
+            <li><strong>Tema:</strong> O quão bem o trabalho representa o tema proposto no dia.</li>
+            <li><strong>Criatividade:</strong> Originalidade da ideia e execução.</li>
+            <li><strong>Técnica:</strong> Uso correto das ferramentas e fundamentos artísticos (cor, luz, proporção).</li>
+        </ul>
+
+        <h2>5. Premiação e Entrega</h2>
+         <p>O vencedor de cada categoria será premiado com um <strong>Voucher Steam de R$ 150,00</strong>.</p>
+        <div style="background-color: #fff9f5; padding: 15px; border-radius: 10px; border: 1px solid #ffe0cc;">
+            
+            <p style="font-size: 13px; color: #555;">
+                <strong>O que é a Steam?</strong><br>
+                A Steam é a maior plataforma digital de jogos e softwares do mundo para computadores. O voucher funciona como um "cartão-presente" que permite ao aluno escolher e baixar jogos, ferramentas de criação ou softwares de entretenimento de forma segura e oficial.
+            </p>
+
+            <p style="font-size: 13px; font-weight: 600; color: var(--orange-ctrl); margin-top: 10px;">
+                ⚠️ Prazo de Entrega: O prêmio pode levar até 20 dias úteis para ser processado e enviado ao responsável após a divulgação do resultado.
+            </p>
+        </div>
+
+        <h2>6. Concurso de Cosplay</h2>
+        <div style="background-color: #f0f4ff; padding: 15px; border-radius: 10px; border-left: 4px solid var(--orange-ctrl);">
+            <p><strong>O que é?</strong><br>
+            O Cosplay (mistura de <em>costume</em>/fantasia e <em>play</em>/brincar) é a oportunidade do aluno se caracterizar como seu personagem favorito de jogos, animes, filmes ou séries.</p>
+            
+            <p style="font-size: 13px; color: #555;">
+                <strong>Como participar:</strong><br>
+                Basta vir fantasiado para o evento! Durante o intervalo da competição, teremos um momento dedicado para que todos os cosplayers mostrem suas vestimentas para os juízes e para o público.
+            </p>
+
+            <ul style="font-size: 13px; color: #555; padding-left: 20px;">
+                <li><strong>Avaliação:</strong> Serão julgados a criatividade, a semelhança com o personagem e a desenvoltura.</li>
+                <li><strong>Segurança:</strong> Não será permitido o uso de acessórios que ofereçam risco (objetos cortantes ou inflamáveis).</li>
+                <li><strong>Respeito:</strong> O figurino deve ser apropriado para um ambiente escolar/infantojuvenil.</li>
+            </ul>
+        </div>
+
+          <h2>7. Cronograma do Evento</h2>
+        <div style="background-color: var(--gray-light); padding: 15px; border-radius: 10px; border-left: 4px solid var(--blue-ctrl);">
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px;">
+                <li style="margin-bottom: 15px;">
+                    <strong>⏰ Horário do Evento: 08:00 às 11:30</strong><br>
+                    <small style="color: #666;">Duração completa de todas as atividades programadas para o Ctrl+Day.</small>
+                </li>
+                
+                <li style="margin-bottom: 15px;">
+                    <strong>🎨 Competição: 08:00 às 09:30</strong><br>
+                    <small style="color: #666;">O momento "mão na massa"! Os alunos terão 1h30 para criar seus projetos de acordo com o tema revelado na hora.</small>
+                </li>
+                
+                <li style="margin-bottom: 15px;">
+                    <strong>🗳️ Votação: 09:30 às 10:30</strong><br>
+                    <small style="color: #666;">Período em que a banca avaliadora analisa os critérios técnicos e a criatividade de cada projeto enviado.</small>
+                </li>
+                
+                <li style="margin-bottom: 15px;">
+                    <strong>🎭 Resultado Cosplay: 10:30 às 11:00</strong><br>
+                    <small style="color: #666;">Anúncio dos vencedores da apresentação de Cosplay que ocorrerá durante o evento.</small>
+                </li>
+                
+                <li>
+                    <strong>🏆 Resultado Competição: 11:00 às 11:30</strong><br>
+                    <small style="color: #666;">Grande encerramento com a revelação dos ganhadores dos Vouchers Steam em cada categoria.</small>
+                </li>
+            </ul>
+        </div>
         
-        <label for="Aluno">Nome do Aluno</label>
-        <input type="text" id="Aluno" name="Nome" placeholder="Ex: Ricardo Sales" required>
-        
-        <label for="telefone">Telefone dos Pais</label>
-        <input type="tel" name="Telefone" id="telefone" placeholder="(00) 00000-0000" required>
-        
-        <label for="modulo">Módulo de Interesse</label>
-        <select name="Modulo" id="modulo" required>
-            <option value="" disabled selected>Selecione o módulo</option>
-            <option value="Kids">Kids 6-9 anos</option>
-            <option value="Teens">Teens 10-13 anos</option>
-            <option value="Young">Young 14-18 anos</option>
-        </select>
-        
-        <button type="submit" id="submit">Quero Participar!</button>
-    </form>
+        <h2>8. Disposições Gerais</h2>
+        <p>Os participantes devem estar presentes nos horários estipulados para garantir a validade da sua participação na votação e premiação.</p>
+    </div>
+
+    <a href="inscricao.html" class="btn-voltar">Continuar para Inscrição</a>
 </div>
-
-<script>
-    // Máscara de Telefone
-    const telInput = document.getElementById('telefone');
-    telInput.addEventListener('input', (e) => {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
-        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-    });
-
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxbHzTcJSpzpd3SCkNTTcXlBZtVy_KF28wHHo4_Fixa2jKA2Yw9qr2o7JbjfO0NliHz/exec';
-    const form = document.querySelector('form');
-    const btn = document.getElementById('submit');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = "Enviando...";
-        
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                alert('Inscrição enviada com sucesso!');
-                form.reset();
-                btn.disabled = false;
-                btn.innerText = "Quero Participar!";
-            })
-            .catch(error => {
-                console.error('Erro!', error.message);
-                alert('Ocorreu um erro. Tente novamente.');
-                btn.disabled = false;
-                btn.innerText = "Quero Participar!";
-            });
-    });
-</script>
 
 </body>
 </html>
